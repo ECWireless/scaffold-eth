@@ -9,6 +9,7 @@ const { Meta } = Card;
 const contractName = "SmartContractWallet"
 
 export default function SmartContractWallet(props) {
+  const [ friendAddress, setFriendAddress ] = useState("")
 
   const tx = Transactor(props.injectedProvider,props.gasPrice)
 
@@ -25,6 +26,33 @@ export default function SmartContractWallet(props) {
 
   const contractAddress = readContracts?readContracts[contractName].address:""
   const contractBalance = useBalance(contractAddress,props.localProvider)
+
+  const updateFriend = (isFriend)=>{
+    return ()=>{
+      tx(writeContracts['SmartContractWallet'].updateFriend(friendAddress, isFriend))
+      setFriendAddress("")
+    }
+  }
+
+  let ownerDisplay = []
+  if(props.address==owner){
+    ownerDisplay.push(
+      <Row align="middle" gutter={4}>
+        <Col span={8} style={{textAlign:"right",opacity:0.333,paddingRight:6,fontSize:24}}>Friend:</Col>
+        <Col span={10}>
+          <AddressInput
+            value={friendAddress}
+            ensProvider={props.ensProvider}
+            onChange={(address)=>{setFriendAddress(address)}}
+          />
+        </Col>
+        <Col span={6}>
+          <Button style={{marginLeft:4}} onClick={updateFriend(true)} shape="circle" icon={<CheckCircleOutlined />} />
+          <Button style={{marginLeft:4}} onClick={updateFriend(false)} shape="circle" icon={<CloseCircleOutlined />} />
+        </Col>
+      </Row>
+    )
+  }
 
 
   let cardActions = []
@@ -68,7 +96,7 @@ export default function SmartContractWallet(props) {
             }}/>
           </Col>
         </Row>
-        
+        {ownerDisplay}
       </div>
     )
   }
