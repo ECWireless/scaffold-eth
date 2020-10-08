@@ -31,8 +31,9 @@ const addToIPFS = async fileToUpload => {
   }
 }
 
-const mainnetProvider = new ethers.providers.InfuraProvider("mainnet","2717afb6bf164045b5d5468031b93f87")
-const localProvider = new ethers.providers.JsonRpcProvider(process.env.REACT_APP_PROVIDER?process.env.REACT_APP_PROVIDER:"http://localhost:8545")
+const mainnetProvider = new ethers.providers.InfuraProvider("mainnet","e2851dc44e9945328e2b6155b534f403")
+// const localProvider = new ethers.providers.JsonRpcProvider(process.env.REACT_APP_PROVIDER?process.env.REACT_APP_PROVIDER:"http://localhost:8545")
+const localProvider = new ethers.providers.InfuraProvider("rinkeby","e2851dc44e9945328e2b6155b534f403")
 
 function App() {
 

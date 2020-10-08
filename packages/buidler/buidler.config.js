@@ -98,13 +98,13 @@ try{
 }catch(e){ /* ignore for now because it might now have a mnemonic.txt file */ }
 
 module.exports = {
-  defaultNetwork: 'localhost',
+  defaultNetwork: 'rinkeby',
   networks: {
     localhost: {
       url: 'http://localhost:8545',
     },
     rinkeby: {
-      url: 'https://rinkeby.infura.io/v3/c954231486fa42ccb6d132b406483d14',
+      url: 'https://rinkeby.infura.io/v3/e2851dc44e9945328e2b6155b534f403',
       accounts: {
         mnemonic: mnemonic
       },
