@@ -4,11 +4,11 @@ import "@nomiclabs/buidler/console.sol";
 
 contract YourContract {
 
-  string public purpose = "🛠 Programming Unstoppable Money";
+  string public recipe = "Recipe name...";
 
-  function setPurpose(string memory newPurpose) public {
-    purpose = newPurpose;
-    console.log(msg.sender,"set purpose to",purpose);
+  function setRecipe(string memory newRecipe) public {
+    recipe = newRecipe;
+    console.log(msg.sender,"set recipe to", recipe);
   }
 
 }
